@@ -7,6 +7,7 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.validation.Valid;
 
 @Path("/simulacoes")
 @Produces(MediaType.APPLICATION_JSON)
@@ -17,7 +18,7 @@ public class SimulacaoResource {
     SimulacaoService service;
 
     @POST
-    public Response simular(SimulacaoRequest request) {
+    public Response simular(@Valid SimulacaoRequest request) {
         SimulacaoResponse response = service.simular(request);
 
         return Response.status(201).entity(response).build();
